@@ -1,0 +1,189 @@
+---
+sidebar_position: 3
+---
+
+# Plugin Manager
+
+In this guide, we will explain how to create your own functions for `aoitelegram`.
+
+## Why and When Do You Need This?
+
+Since developers may not always add a particular function to the library, you can create a function yourself, which can be used not only by you but also by anyone who installs your npm package.
+
+## How to Use
+
+In the `PluginManager` class constructor, it's not mandatory to specify the parameter that searches for `.aoiplugin.json` files in the `node_modules` folders and moves them to the `node_modules/.aoiplugins` directory for later use in your project.
+
+```javascript
+const { AoiClient, PluginManager } = require("aoitelegram");
+
+const loadPlugin = new PluginManager(true);
+// dir: functions/
+const pluginDir = loadPlugin.loadDirPlugins("./functions");
+// dir: node_modules/.aoiplugins/
+const pluginModules = loadPlugin.loadPlugins("path plugin", "commit");
+
+const bot = new AoiClient({
+  token: "",
+  customFunction: [...pluginDir, ...pluginModules],
+});
+```
+
+```javascript
+const { AoiClient, PluginManager } = require("aoitelegram");
+
+const bot = new AoiClient({
+  token: "",
+});
+
+const loadPlugin = new PluginManager(true, bot);
+// dir: functions/
+loadPlugin.loadDirPlugins("./functions");
+// dir: node_modules/.aoiplugins/
+loadPlugin.loadPlugins("path plugin", "commit");
+```
+
+```javascript
+const { AoiClient } = require("aoitelegram");
+
+const bot = new AoiClient({
+  token: "",
+});
+
+// array or object
+bot.addFunction([]);
+bot.addFunction();
+```
+
+The structure of plugins for `npm` packages should be as follows:
+
+```
+dirName
+   .aoiplugin.json
+```
+
+In `aoiplugin.json`, the only parameter used is the path to the files or file that should be used:
+
+```json
+{
+  "name": "./src/",
+  "version": "0.1.2"
+}
+```
+
+## Example of Creation
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  name: "$await",
+  callback: async (ctx, event, database, error) => {
+    const [time = 1] = await ctx.evaluateArgs(ctx.getArgs(0, 1));
+    return new Promise((res) => setTimeout(() => res(""), time * 1000));
+  },
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  name: "$await",
+  callback: async (ctx, event, database, error) => {
+    const [time = 1] = await ctx.evaluateArgs(ctx.getArgs(0, 1));
+    return new Promise((res) => setTimeout(() => res(""), time * 1000));
+  },
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem value="aoitelegram" label="AoiTelegram">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  name: "$log",
+  params: ["text"],
+  version: "0.1.0",
+  type: "aoitelegram",
+  code: `
+    $onlyIf[{text}!={text};Error parameter]
+    $print[{text}]
+  `,
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  name: "$log",
+  params: ["text"],
+  version: "0.1.0",
+  type: "aoitelegram",
+  code: `
+    $onlyIf[{text}!={text};Error parameter]
+    $print[{text}]
+  `,
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
+
+## Function js
+
+- `ctx` is the function context.
+- `event` is the object passed when using a specific event.
+- `database` is an object that provides database methods.
+- `error` is an object for error handling.
+
+## Ctx
+
+It has the following methods:
+
+- `argsCheck` - Check if the number of arguments is as expected.
+
+  - `amount` - Amount of arguments required.
+  - `throwError` - Throw an error automatically.
+  - `event` - Event object.
+  - `messageError` - Error message.
+
+- `getArgs` - Get arguments from 'start' up to 'end'.
+
+  - `start` - The start index.
+  - `end` - Amount of arguments to be returned.
+
+- `evaluateArgs` - Evaluate and run provided arguments.
+  - `args` - Arguments to run.
+
+## database
+
+These are all the methods available from [database-sempai](https://www.npmjs.com/package/database-sempai).
+
+## error
+
+- `errorArgs` - Sends an error message for a function with an incorrect argument count.
+
+  - `amount` - The expected number of arguments.
+  - `parameterCount` - The actual number of arguments provided.
+  - `func` - The name of the function generating the error.
+
+- `errorVar` - Sends an error message for an invalid variable.
+
+  - `nameVar` - The name of the invalid variable.
+  - `func` - The name of the function generating the error.
+
+- `errorTable` - Sends an error message for an invalid table.
+  - `table` - The name of the invalid table.
+  - `func` - The name of the function generating the error.
+
+## Function aoitelegram
+
+**In development**

@@ -1,0 +1,113 @@
+---
+sidebar_position: 2
+---
+
+# Command Loader
+
+In this guide, we will explain how to get started with command handlers, create multiple commands in one file, and handle events.
+
+## Why Should You Use a Loader?
+
+Why should you use a command handler? Storing your commands in a single file may seem fine at first, but as the number of commands grows, it becomes difficult to find and update them. That's why you should use a command handler to maintain order in your main file and rid yourself of clutter.
+
+## Main File
+
+In the `LoadCommands` class constructor, it is mandatory to specify your instance of the `AoiClient` class. In the `loadCommands` method, the first argument is the path to the folder, and the second argument is responsible for console output.
+
+```javascript
+const { LoadCommands } = require("aoitelegram");
+
+const loader = new LoadCommands(bot).loadCommands("./command/", true);
+```
+
+## Example
+
+### One Command in a File
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="esm" label="ESModule">
+```javascript
+export default {
+  name: "ping",
+  code: `$replyMessage[Bot ping: $ping ms]`,
+};
+```
+  </TabItem>
+  <TabItem value="commonjs" label="Commonjs">
+```javascript
+module.exports = {
+  name: "ping",
+  code: `$replyMessage[Bot ping: $ping ms]`,
+};
+```
+  </TabItem>
+</Tabs>
+
+### Multiple Commands in a File
+
+<Tabs>
+  <TabItem value="esm" label="ESModule">
+```javascript
+export default [
+  {
+    name: "ping",
+    code: `$replyMessage[Bot ping: $ping ms]`,
+  },
+  {
+    name: "pong",
+    code: `$replyMessage[ping 🏓]`,
+  },
+];
+```
+  </TabItem>
+  <TabItem value="commonjs" label="Commonjs">
+```javascript
+module.exports = [
+  {
+    name: "ping",
+    code: `$replyMessage[Bot ping: $ping ms]`,
+  },
+  {
+    name: "pong",
+    code: `$replyMessage[ping 🏓]`,
+  },
+];
+```
+  </TabItem>
+</Tabs>
+
+### Events
+
+<Tabs>
+  <TabItem value="esm" label="ESModule">
+```javascript
+export default [
+  {
+    name: "count",
+    code: `$replyMessage[Count value: $getVar[count]]`,
+  },
+  {
+    type: "message",
+    code: `$setVar[count;$message[1]]`,
+  },
+];
+```
+  </TabItem>
+  <TabItem value="commonjs" label="Commonjs">
+```javascript
+module.exports = [
+  {
+    name: "count",
+    code: `$replyMessage[Count value: $getVar[count]]`,
+  },
+  {
+    type: "message",
+    code: `$setVar[count;$message[1]]`,
+  },
+];
+```
+  </TabItem>
+</Tabs>

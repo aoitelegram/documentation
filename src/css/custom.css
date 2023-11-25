@@ -1,0 +1,27 @@
+/**
+ * Customize the global CSS for Docusaurus.
+ */
+
+/* Define your primary color and variations */
+:root {
+  --primary-color: #059ce1;
+  --primary-color-dark: #36bac3;
+  --primary-color-darker: #239097;
+  --primary-color-darkest: #2c8d92;
+  --primary-color-light: #2d989d;
+  --primary-color-lighter: #359099;
+  --primary-color-lightest: #3cadab;
+  --code-font-size: 95%;
+  --highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust the color palette for dark mode */
+[data-theme="dark"] {
+  --primary-color: #7494ec;
+  --primary-color-dark: #557ce8;
+  --primary-color-darker: #4670e6;
+  --primary-color-darkest: #1e50d9;
+  --primary-color-light: #93acf0;
+  --primary-color-lighter: #a2b8f2;
+  --primary-color-lightest: #d1dcf9;
+}

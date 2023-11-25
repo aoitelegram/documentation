@@ -1,0 +1,74 @@
+# Events
+
+To track events, we will need either methods or parameters in the loader.
+
+## Available events
+
+- `readyCommand`
+- `messageCommand`
+- `callbackQueryCommand`
+- `editedMessageCommand`
+- `channelPostCommand`
+- `editedChannelPostCommand`
+- `inlineQueryCommand`
+- `shippingQueryCommand`
+- `preCheckoutQueryCommand`
+- `pollCommand`
+- `pollAnswerCommand`
+- `chatMemberCommand`
+- `myChatMemberCommand`
+- `chatJoinRequestCommand`
+
+## Available events in the loader
+
+- `ready`
+- `message`
+- `callback_query`
+- `edited_message`
+- `channel_post`
+- `edited_channel_post`
+- `inline_query`
+- `shipping_query`
+- `pre_checkout_query`
+- `poll`
+- `poll_answer`
+- `chat_member`
+- `my_chat_member`
+- `chat_join_request`
+
+## Example
+
+You can implement event handlers in your Telegram bot using methods or by specifying event parameters in the loader.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.readyCommand({
+  code: `$print[Starting @$client[username]]`,
+});
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  type: "ready",
+  code: `$print[Starting @$client[username]]`,
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  type: "ready",
+  code: `$print[Starting @$client[username]]`,
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>

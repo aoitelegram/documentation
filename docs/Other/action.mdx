@@ -1,0 +1,50 @@
+# Action
+
+Use this method to track `callback_query` interactions.
+
+## Parameters
+
+| Parameter        | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| `options.data`   | The action data string or an array of action data strings. |
+| `options.answer` | Whether to answer the action. Default is `false`.          |
+| `options.code`   | The code to be executed when the command is invoked.       |
+
+## Usage Example
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.action({
+  data: "test_data",
+  answer: true,
+  code: `$print[Action]`,
+});
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  data: "test_data",
+  answer: true,
+  code: `$print[Action]`,
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  data: "test_data",
+  answer: true,
+  code: `$print[Action]`,
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>

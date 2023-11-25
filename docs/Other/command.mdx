@@ -1,0 +1,52 @@
+# Command
+
+Use this method to track commands.
+
+## Parameters
+
+| Parameter             | Description                                                                  |
+| --------------------- | ---------------------------------------------------------------------------- |
+| `options`             | Command options object.                                                      |
+| `options.name`        | The name of the command.                                                     |
+| `options.aliases`     | Aliases, work the same way as name.                                          |
+| `options.typeChannel` | Specifies in what type of channels to watch the command. Default is `false`. |
+| `options.code`        | The code to be executed when the command is invoked.                         |
+
+## Usage Example
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.command({
+  name: "ping",
+  typeChannel: "private",
+  code: `$replyMessage[Bot ping: $ping ms]`,
+});
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  name: "ping",
+  typeChannel: "private",
+  code: `$replyMessage[Bot ping: $ping ms]`,
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  name: "ping",
+  typeChannel: "private",
+  code: `$replyMessage[Bot ping: $ping ms]`,
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
