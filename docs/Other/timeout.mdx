@@ -1,0 +1,59 @@
+# Timeout
+The Timeout function simplifies the creation of actions that require time. The timeout cannot use message context, meaning you can't use methods like `$replyMessage` and similar functions. Additionally, the time limit depends on `setTimeout` in Node.js. Even if you restart the bot, the timeout will continue to work.
+
+## Parameters
+### $setTimeout
+| Parameter  | Description                               |
+| -----------| ------------------------------------------|
+| timeoutId  | The ID of the timeout to which the event will react |
+| milliseconds | Time after which the timeout should trigger (not less than 5000 milliseconds) |
+| timeoutData | Object to be passed to the timeout |
+
+### timeoutCommand
+| Parameter  | Description                               |
+| -----------| ------------------------------------------|
+| timeoutId  | The ID of the timeout to which the event will react |
+| code        | The code that should execute when the timeout triggers |
+
+## Example
+
+Also, the `$timeoutData[pathProperty?]` function is available to retrieve data passed using `$setTimeout`.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.command({
+  name: "timeout",
+  code: `$setTimeout[awaitData;60000;{ "authorID": $usernameID, "username": "$username" }]`
+})
+
+client.timeoutCommand({
+  id: "awaitData",
+  code: `$print[Timeout data ;$timeoutData[authorID];$timeoutData]`
+})
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  id: "awaitData",
+  code: `$print[Timeout data ;$timeoutData[authorID];$timeoutData]`
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  id: "awaitData",
+  code: `$print[Timeout data ;$timeoutData[authorID];$timeoutData]`
+}
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>

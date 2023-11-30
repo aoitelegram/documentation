@@ -145,23 +145,72 @@ module.exports = {
 - `error` is an object for error handling.
 
 ## Ctx
+```js
+Context {
+  fileName: string | { event: string };
+  type: string;
+  target: {
+    type: string;
+    value: string;
+    child: Object[];
+    pos: number;
+    line: number;
+  };
+  localVars: Collection<string, unknown>;
+  array: Collection<string, unknown>;
+  object: Collection<string, unknown>;
+}
+```
 
 It has the following methods:
 
 - `argsCheck` - Check if the number of arguments is as expected.
-
   - `amount` - Amount of arguments required.
-  - `throwError` - Throw an error automatically.
   - `event` - Event object.
-  - `messageError` - Error message.
 
 - `getArgs` - Get arguments from 'start' up to 'end'.
-
   - `start` - The start index.
   - `end` - Amount of arguments to be returned.
 
 - `evaluateArgs` - Evaluate and run provided arguments.
   - `args` - Arguments to run.
+
+- `getEvaluateArgs` - Retrieve and evaluate arguments from the `start` index up to a specified `end` count.
+  - `start` - The start index.
+  - `end` - Amount of arguments to be returned.
+
+- `checkArgumentTypes` - Checks whether the provided arguments match the expected argument types for a function.
+  - `argument` - Array of arguments to be checked.
+  - `errorMessage` - Object to handle error messages.
+  - `expectedArgumentTypes` - Array of expected argument types
+  - Types available for checking: `number`, `object`, `string`, `nan`, `undefined`, `null`, `unknown`, `boolean`. 
+
+#### Example
+```js
+client.addFunction({
+  name: "$log",
+  callback: async (ctx, dataEvent, database, error) => {
+    ctx.argsCheck(1, error);
+    const evaluate = await ctx.getEvaluateArgs();
+    ctx.checkArgumentTypes(evaluate, error, ["string | number | boolean"]);
+    console.log(...evaluate);
+    return undefined;
+  }
+});
+```
+```js
+client.addFunction({
+  name: "$log",
+  callback: async (ctx, dataEvent, database, error) => {
+    ctx.argsCheck(1, error);
+    const args = await ctx.getArgs(1, 2);
+    const evaluate = await ctx.evaluateArgs(args);
+    ctx.checkArgumentTypes(evaluate, error, ["string | number | boolean"]);
+    console.log(...evaluate);
+    return undefined;
+  }
+});
+```
 
 ## database
 
@@ -174,6 +223,7 @@ These are all the methods available from [database-sempai](https://www.npmjs.com
   - `amount` - The expected number of arguments.
   - `parameterCount` - The actual number of arguments provided.
   - `func` - The name of the function generating the error.
+  - `line` - Line number of the error.
 
 - `errorVar` - Sends an error message for an invalid variable.
 
@@ -183,6 +233,30 @@ These are all the methods available from [database-sempai](https://www.npmjs.com
 - `errorTable` - Sends an error message for an invalid table.
   - `table` - The name of the invalid table.
   - `func` - The name of the function generating the error.
+
+- `errorArray` - Create and send an error message for an array-related error.
+  - `name` - The name of the variable that does not exist.
+  - `func` - The name of the function causing the error.
+
+- `customError` - Creates a custom error with a specific description and function name.
+  - `description` - Custom description of the error.
+  - `func` - The name of the function where the error occurred.
+  - `line` - Line number of the error.
+
+```js
+client.addFunction({
+  name: "$error",
+  callback: async (ctx, dataEvent, database, error) => {
+    const target = ctx.target;
+    const args = await ctx.getEvaluateArgs();
+    ctx.checkArgumentTypes(args, error, ["string | undefined"]);
+    error.customError(args[1] ?? "default error", target.value, target.line);
+    return undefined;
+  }
+});
+```
+
+If you want to remove a function, there is a method called `removeFunction(func: string | string[])`.
 
 ## Function aoitelegram
 

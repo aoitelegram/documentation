@@ -1,0 +1,59 @@
+# Loop
+The following methods, presented below, handle the repetition of a specified code at defined intervals without interruption.
+
+## Parameters
+
+| Parameter | Description |
+| --------- | ----------- |
+| every     | Interval in milliseconds for code execution (default 60000) |
+| code      | The command code to be executed in the loop |
+
+## Example
+
+Also, the `$break` function is available, which stops the loop repetition.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.loopCommand({
+  every: 5000,
+  code: `
+    $print[Count: $getVar[count]] 
+    $setVar[count;$math[$getVar[count] + 1]]
+    $if[$getVar[count]==10;$break]
+  `
+})
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  every: 5000,
+  type: "loop",
+  code: `
+    $print[Count: $getVar[count]] 
+    $setVar[count;$math[$getVar[count] + 1]]
+  `
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  every: 5000,
+  type: "loop",
+  code: `
+    $print[Count: $getVar[count]] 
+    $setVar[count;$math[$getVar[count] + 1]]
+  `
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>

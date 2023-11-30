@@ -1,0 +1,74 @@
+# Awaited
+The following methods, which will be presented below, are responsible for repeating a specified code at intervals of a defined time. However, they have access to the message context (meaning you have access to functions like `$sendMessage` and so on), and this loop is triggered not directly but through the use of the `$loop` method.
+
+## Parameters
+
+### awaitedCommand
+| Parameter | Description |
+| --------- | ----------- |
+| awaited   | The name of the loop to which the event will react |
+| every     | Interval in milliseconds for code execution (default 60000) |
+| code      | The command code to be executed in the loop |
+
+### $loop
+| Parameter | Description |
+| --------- | ----------- |
+| timeout   | The identifier to which each `timeoutCommand` will react |
+| milliseconds | Time after which the interval will trigger |
+| timeoutData | Object to be passed |
+
+## Example
+
+Additionally, there is the `$awaitedData[pathProperty?]` function, used to retrieve data passed using `$loop`. Also, the `$break` function is available, which stops the loop.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+```js
+client.command({
+   name: "loop",
+   code: `$loop[awaited;1000;{ "data": $usernameID }]
+  `
+})
+ 
+client.awaitedCommand({
+  awaited: "awaited",
+  code: `
+   $print[$awaitedData]
+   $replyMessage[Text $awaitedData[data]]
+   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+ `
+})
+```
+  </TabItem>
+  <TabItem value="loader" label="Loader">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  awaited: "awaited",
+  code: `
+   $print[$awaitedData]
+   $replyMessage[Text $awaitedData[data]]
+   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+ `
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  awaited: "awaited",
+  code: `
+   $print[$awaitedData]
+   $replyMessage[Text $awaitedData[data]]
+   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+ `
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
