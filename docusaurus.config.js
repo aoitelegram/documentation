@@ -66,12 +66,12 @@ const config = {
             label: "Home",
           },
           {
-            href: "https://github.com/Sempai-07/aoitegram",
+            href: "https://github.com/Sempai-07/aoitelegram",
             label: "GitHub",
             position: "right",
           },
           {
-            href: "https://npmjs.com/package/aoitegram",
+            href: "https://npmjs.com/package/aoitelegram",
             label: "NPM",
             position: "right",
           },
@@ -82,7 +82,7 @@ const config = {
         logo: {
           alt: "aoitegram",
           src: "img/logo-telegramsjs.jpg",
-          href: "https://github.com/Sempai-07/aoitegram",
+          href: "https://github.com/Sempai-07/aoitelegram",
           width: 60,
           height: 60,
         },
@@ -114,7 +114,7 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/Sempai-07/aoitegram",
+                href: "https://github.com/Sempai-07/aoitelegram",
               },
             ],
           },
