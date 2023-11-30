@@ -10,7 +10,7 @@ This function is used to retrieve the ping time to the server. It returns the pi
 client.command({
   name: "ping",
   code: `
-  $rendMessage[Bot ping: $ping ms]
+  $sendMessage[Bot ping: $ping ms]
   `,
 });
 ```
