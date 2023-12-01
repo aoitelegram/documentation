@@ -18,6 +18,19 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="javascript" label="JavaScript">
 ```js
+client.command({
+  name: "callback",
+  code: `
+  $addCallbackQuery[1;text1;test_data]
+  $addCallbackQuery[1;text2;data2]
+  $addCallbackQuery[2;text3;data3]
+  $addCallbackQuery[2;text4;data4]
+  $addCallbackQuery[3;text5;data5]
+  $sendMessage[Text button!]
+  $sendMessage[No button!]
+  `,
+});
+
 client.action({
   data: "test_data",
   answer: true,
