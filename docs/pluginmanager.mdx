@@ -113,7 +113,7 @@ export default {
   version: "0.1.0",
   type: "aoitelegram",
   code: `
-    $onlyIf[{text}!={text};Error parameter]
+    $onlyIf[{text}!=undefined;Error parameter]
     $print[{text}]
   `,
 };
@@ -127,8 +127,9 @@ module.exports = {
   version: "0.1.0",
   type: "aoitelegram",
   code: `
-    $onlyIf[{text}!={text};Error parameter]
+    $onlyIf[{text}!=undefined;Error parameter]
     $print[{text}]
+    $return[{text}]
   `,
 };
 ```
@@ -168,7 +169,7 @@ It has the following methods:
   - `amount` - Amount of arguments required.
   - `event` - Event object.
 
-- `getArgs` - Get arguments from 'start' up to 'end'.
+- `getArgs` - Get arguments from `start` up to `end`.
   - `start` - The start index.
   - `end` - Amount of arguments to be returned.
 
@@ -178,6 +179,11 @@ It has the following methods:
 - `getEvaluateArgs` - Retrieve and evaluate arguments from the `start` index up to a specified `end` count.
   - `start` - The start index.
   - `end` - Amount of arguments to be returned.
+
+- `getAoiArgs` - Asynchronously retrieves arguments related to AOI.
+
+- `setStopping` - Set the stopping flag for the operation.
+  - `stopping` - Flag indicating whether to stop the operation.
 
 - `checkArgumentTypes` - Checks whether the provided arguments match the expected argument types for a function.
   - `argument` - Array of arguments to be checked.
@@ -211,10 +217,48 @@ client.addFunction({
   }
 });
 ```
+```js
+client.addFunction({
+  name: "$onlyArgsType",
+  callback: async (ctx, dataEvent, database, error) => {
+    ctx.argsCheck(2, error);
+    const evaluate = await ctx.getEvaluateArgs();
+    ctx.checkArgumentTypes(evaluate, error, ["...number"]);
+    let text = "";
+    evaluate.forEach((elem) => text += `${elem}\n`);
+    return text;
+  }
+});
+```
+```js
+client.addFunction({
+  name: "$log",
+  callback: async (ctx, dataEvent, database, error) => {
+    ctx.argsCheck(1, error);
+    const evaluate = await ctx.getAoiArgs();
+    ctx.checkArgumentTypes(evaluate.splits, error, ["string | number | boolean"]);
+    console.log(evaluate.inside);
+    // or
+    console.log(evaluate.toString());
+    return undefined;
+  }
+});
+```
+```js
+client.addFunction({
+  name: "$stopping",
+  callback: async (ctx, dataEvent, database, error) => {
+    const evaluate = await ctx.getAoiArgs();
+    const args = evaluate.splits?.[0] || true;
+    if (args) ctx.setStopping(true);
+    else ctx.setStopping(false);
+  }
+});
+```
 
 ## database
 
-These are all the methods available from [database-sempai](https://www.npmjs.com/package/database-sempai).
+These are all the methods available from [@aoitelegram/database](https://www.npmjs.com/package/@aoitelegram/database).
 
 ## error
 

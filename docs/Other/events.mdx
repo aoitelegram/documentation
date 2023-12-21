@@ -1,4 +1,4 @@
-# Events
+# Handler Events
 
 To track events, we will need either methods or parameters in the loader.
 
@@ -18,6 +18,12 @@ To track events, we will need either methods or parameters in the loader.
 - `chatMemberCommand`
 - `myChatMemberCommand`
 - `chatJoinRequestCommand`
+- `variableDelete`
+-- functions: `$oldVariable[extname/path/tables/value/key]`
+- `variableUpdate`
+-- functions: `$oldVariable[extname/path/tables/value/key]` and `$newVariable[extname/path/tables/value/key]`
+- `variableCreate`
+-- functions: `$newVariable[extname/path/tables/value/key]`
 
 ## Available events in the loader
 
@@ -35,6 +41,9 @@ To track events, we will need either methods or parameters in the loader.
 - `chat_member`
 - `my_chat_member`
 - `chat_join_request`
+- `variableDelete`
+- `variableUpdate`
+- `variableCreate`
 
 ## Example
 

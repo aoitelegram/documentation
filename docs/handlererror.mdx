@@ -1,0 +1,43 @@
+---
+sidebar_position: 5
+---
+# Handler Errors
+
+`aoitelegram` provides the `<AoiClient>.functionErrorCommand` method, which is triggered in case of an error within a function/command (excluding argument-check related exceptions).
+
+:::note{.warning}
+To enable this method, you need to set `functionError` to `true` in the constructor of the `AoiClient` class.
+```js
+const bot = new AoiClient({
+   functionError: true,
+  // ... other configurations
+});
+```
+:::
+
+Additionally, to retrieve error information, use the `$handleError` function. The parameter determines the information to be obtained.
+- `error` - error text (default)
+- `function` - name of the function where the error occurred
+- `command` - name of the command where the error occurred
+
+## Examples
+```js
+client.functionErrorCommand({
+  code: `
+$sendMessage[Sorry, but there was an error in the $handleError[function] function within the $handleError[command] command: $handleError[error]]
+`,
+});
+```
+
+## Suppressing Chat Error Messages
+In `aoitelegram`, you can also disable errors sent to the chat while still logging them to the console.
+
+:::note{.warning}
+To enable this method, you need to set `sendMessageError` to `false` in the constructor of the `AoiClient` class.
+```js
+const bot = new AoiClient({
+   sendMessageError: false,
+  // ... other configurations
+});
+```
+:::

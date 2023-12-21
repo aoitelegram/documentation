@@ -1,4 +1,4 @@
-# $token
+# $clientToken
 
 ## Usage
 
@@ -9,6 +9,6 @@ Returns the bot token
 ```javascript
 client.command({
   name: "token",
-  code: `$replyMessage[Token: $token]`,
+  code: `$replyMessage[Token: $clientToken]`,
 });
 ```

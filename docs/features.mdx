@@ -1,0 +1,27 @@
+---
+sidebar_position: 4
+---
+# Features of aoitelegram
+
+Here will be a brief overview of what this library can do. This library is specifically designed for creating Telegram bots based on the syntax of `aoi.js` and `bdfd`. The differences between `aoitelegram` and them will be explained below.
+
+`aoitelegram` is developed by a solo developer who drew inspiration from `aoi.js`, so many elements of the library are influenced by `aoi.js`. It features custom functions, a convenient and fast launch, built-in plugin support, and database support out of the box. It is user-friendly for creating Telegram bots, distinguishing itself from `aoi.js`.
+
+`aoitelegram` is written in the source code of `bds.js`, resulting in some defects in the functioning of functions. For example, if we take the equivalent of `$ping` in `aoi.js`, we can write `$pingms` to get `24ms`, but in `aoitelegram`, it would throw an error as `$pingms` is not recognized. Therefore, specific functions that do not take arguments need to be written separately.
+
+Furthermore, if a certain function is missing in the library or custom functions, the `aoitelegram` interpreter will throw an error about it. Being a recently created library, `aoitelegram` has only a small portion of functions from Node.js and the Telegram API. Regarding functions, `aoitelegram` parses types passed to functions. While `aoi.js` only accepts strings as types, `aoitelegram` parses types such as `undefined` (including empty values), `NaN`, `number` (`float` and `integer`), `boolean`, `string`, and `null`.
+
+This is a brief overview of what I could write about `aoitelegram`. Best of luck with your development using this library ❤️.
+
+|               | aoitelegram                              | aoi.js                                    | bdfd                                   |
+|---------------|------------------------------------------|-------------------------------------------|----------------------------------------|
+| **Purpose**   | Created for Telegram bots, resembling aoi.js | Created to simplify bot creation in Discord | Created to simplify bot creation in Discord |
+| **Cost**      | Free functions, events                    | Free functions, events                     | Partially paid, numerous paid functions and events |
+| **Custom Functions** | Supports custom functions, many methods | Supports custom functions, few methods     | Absence of custom function creation     |
+| **Command Loader** | Command loader present                  | Command loader present                     | Partial presence of command loader      |
+| **Database Library** | Own local database library              | Own database library (not only local)      | Unknown database library               |
+| **Plugin Support** | Built-in plugin support and loading      | No built-in plugin support, no loading     | No plugin support, no loading           |
+| **Compatibility** | Partial compatibility with Node.js and Telegram API | Full compatibility with Node.js and Discord API | Partial compatibility with Discord API  |
+| **Error Hiding** | Error hiding in chat                     | No error hiding                            | No error hiding                         |
+| **Code Reading** | Top-down only                            | Bottom-up only                            | Top-down and Bottom-up                  |
+| **Open Source** | Open-source                               | Open-source                               | Closed-source                           |

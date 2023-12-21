@@ -1,14 +1,17 @@
 # $addCallbackQuery
+
 This function is used to add buttons to a message.
 
 ## Parameters
-| Parameter      | Description                      |
-| -------------- | -------------------------------- |
-| index          | Index where the button will be placed |
-| text           | Text to be displayed on the button |
-| callback_data  | ID to be responded to by the button |
+
+| Parameter     | Description                           |
+| ------------- | ------------------------------------- |
+| index         | Index where the button will be placed |
+| text          | Text to be displayed on the button    |
+| callback_data | ID to be responded to by the button   |
 
 ## Example
+
 ```js
 client.command({
   name: "callback",

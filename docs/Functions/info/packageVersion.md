@@ -1,4 +1,4 @@
-# $aoiversion
+# $packageVersion
 
 ## Usage
 
@@ -9,6 +9,6 @@ Return `aoitelegram` version
 ```javascript
 client.command({
   name: "version",
-  code: `$replyMessage[AoiTelegram version: $version]`,
+  code: `$replyMessage[AoiTelegram version: $packageVersion]`,
 });
 ```

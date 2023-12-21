@@ -1,4 +1,4 @@
-# Awaited
+# Handler Awaited
 The following methods, which will be presented below, are responsible for repeating a specified code at intervals of a defined time. However, they have access to the message context (meaning you have access to functions like `$sendMessage` and so on), and this loop is triggered not directly but through the use of the `$loop` method.
 
 ## Parameters
@@ -14,7 +14,7 @@ The following methods, which will be presented below, are responsible for repeat
 | Parameter | Description |
 | --------- | ----------- |
 | timeout   | The identifier to which each `timeoutCommand` will react |
-| milliseconds | Time after which the interval will trigger |
+| time | Time after which the interval will trigger |
 | timeoutData | Object to be passed |
 
 ## Example
@@ -29,7 +29,7 @@ import TabItem from "@theme/TabItem";
 ```js
 client.command({
    name: "loop",
-   code: `$loop[awaited;1000;{ "data": $usernameID }]
+   code: `$loop[awaited;1s;{ "data": $usernameID }]
   `
 })
  
