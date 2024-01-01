@@ -12,12 +12,15 @@ Why should you use a command handler? Storing your commands in a single file may
 
 ## Main File
 
-In the `LoadCommands` class constructor, it is mandatory to specify your instance of the `AoiClient` class. In the `loadCommands` method, the first argument is the path to the folder, and the second argument is responsible for console output.
+- In the `LoadCommands` class constructor, it is mandatory to specify your instance of the `AoiClient` class. In the `loadCommands` method, the first argument is the path to the folder, and the second argument is responsible for console output.
+- For easier use or tracking of variables in the library, you can utilize the `loadVariables` method, which is built into the `LoadCommands` class.
 
 ```javascript
 const { LoadCommands } = require("aoitelegram");
 
-const loader = new LoadCommands(bot).loadCommands("./command/", true);
+const loader = new LoadCommands(bot)
+loader.loadCommands("./command/", true);
+loader.loadVariables("./variables/", true);
 ```
 
 ## Example
@@ -108,6 +111,39 @@ module.exports = [
     code: `$setVar[count;$message[1]]`,
   },
 ];
+```
+  </TabItem>
+</Tabs>
+
+## Variables
+
+<Tabs>
+  <TabItem value="esm" label="ESModule">
+```javascript
+export default {
+  variables: {
+    sempai: 10,
+    string: "Hello, world!",
+    aoijs: true,
+    webapp: false,
+    mz: [],
+  },
+  tables: ["main"],
+};
+```
+  </TabItem>
+  <TabItem value="commonjs" label="Commonjs">
+```javascript
+module.exports = {
+  variables: {
+    sempai: 10,
+    string: "Hello, world!",
+    aoijs: true,
+    webapp: false,
+    mz: [],
+  },
+  tables: ["main"],
+};
 ```
   </TabItem>
 </Tabs>

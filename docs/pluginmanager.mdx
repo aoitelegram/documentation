@@ -129,7 +129,6 @@ module.exports = {
   code: `
     $onlyIf[{text}!=undefined;Error parameter]
     $print[{text}]
-    $return[{text}]
   `,
 };
 ```
@@ -300,7 +299,7 @@ client.addFunction({
 });
 ```
 
-If you want to remove a function, there is a method called `removeFunction(func: string | string[])`.
+If you want to remove a function, there is a method called `<AoiClient>.removeFunction(func: string | string[])`.
 
 ## Function aoitelegram
 

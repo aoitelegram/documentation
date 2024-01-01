@@ -1,0 +1,108 @@
+---
+sidebar_position: 4
+---
+
+# Custom Event
+
+`aoitelegram` is a powerful module for creating Telegram bots based on the `aoijs` syntax. Consequently, `aoitelegram` hasn't overlooked the creation of custom events. Now, events can be created using both `aoitelegram` and `js` syntax, similar to creating functions.
+
+## How to Use
+
+```javascript
+const { AoiClient, CustomEvent } = require("aoitelegram");
+
+const bot = new AoiClient({
+  token: "",
+});
+
+const event = new CustomEvent(bot);
+
+// Attaching a handler to the event can be done using a method in the main file, but it's recommended to use loadEvents to load the handlers
+event.command({
+  listen: "eventName",
+  once: true,
+  // type: "aoitelegram" (default)
+  code: `
+  $print[$eventData]
+  $print[$eventData[1]] // index args
+  `
+})
+
+event.command({
+  listen: "eventName",
+  once: true,
+  type: "js",
+  callback: (...args) => {
+    console.log(args);
+  }
+})
+
+event.emit("eventName", 1, 2, 3, 4, 5, 6, 7);
+
+// or
+event.loadEvents("./events/", true);
+```
+
+:::note{.warning}
+To trigger an event within `aoitelegram` code, you need to use the function `$emitData[nameEvent;...args]`
+:::
+
+## Example of Creation
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="javascript" label="JavaScript">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  listen: "eventName",
+  type: "js",
+  callback: (...args) => {
+    const math = args.map((arg) => arg / 2);
+    console.log(math);
+  },
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  listen: "eventName",
+  type: "js",
+  callback: (...args) => {
+    const math = args.map((arg) => arg / 2);
+    console.log(math);
+  },
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem value="aoitelegram" label="AoiTelegram">
+    <Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  listen: "eventName",
+  code: `
+    $print[$eventData[1]]
+  `,
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  listen: "eventName",
+  code: `
+    $print[$eventData[1]]
+  `,
+};
+```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
