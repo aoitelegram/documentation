@@ -26,6 +26,10 @@ sidebar_position: 1
 Documentation will always be updated to reflect the latest changes! Descriptions of some functions may be unclear – these will be corrected/modified, so please don't beat me 😭. [GitHub docs](https://github.com/Sempai-07/aoiwebsite)
 :::
 
+:::note{.warning}
+>The syntax of `aoitelegram` and versions above `0.5.0` has been completely changed. Now the code is read from bottom to top, and the standard `$if` is used as `if: "old"` in `aoi.js` (there is no need to specify the `if: "old"` option, it is set by default).
+:::
+
 ## Installation
 
 To use `aoitelegram` in your project, you can install it via npm:
@@ -74,8 +78,6 @@ const bot = new AoiClient({
   functionError: true,
   /** To disable text errors **/
   sendMessageError: true,
-  /** Compilation of &localVar& variables **/
-  varReplaceOption: false,
   /** Outputting system messages to the console. */
   console: true,
   /** Displaying messages about new versions. */
@@ -109,7 +111,7 @@ bot.command({
 // Define a command to check the bot's ping.
 bot.command({
   name: "ping",
-  code: `$replyMessage[Bot ping: $ping ms]`,
+  code: `$replyMessage[Bot ping: $pingms]`,
 });
 
 // Define a command to display bot information.
@@ -120,7 +122,7 @@ $replyMessage[
 Bot ID: $clientId
 Name: $clientFirstName
 Username: $clientUsername
-Ping: $ping ms
+Ping: $pingms
 ]`,
 });
 
@@ -173,8 +175,6 @@ const bot = new AoiClient({
   functionError: true,
   /** To disable text errors **/
   sendMessageError: true,
-  /** Compilation of &localVar& variables **/
-  varReplaceOption: false,
   /** Outputting system messages to the console. */
   console: true,
   /** Displaying messages about new versions. */
@@ -208,7 +208,7 @@ bot.command({
 // Define a command to check the bot's ping.
 bot.command({
   name: "ping",
-  code: `$replyMessage[Bot ping: $ping ms]`,
+  code: `$replyMessage[Bot ping: $pingms]`,
 });
 
 // Define a command to display bot information.
@@ -219,7 +219,7 @@ $replyMessage[
 Bot ID: $clientId
 Name: $clientFirstName
 Username: $clientUsername
-Ping: $ping ms
+Ping: $pingms
 ]`,
 });
 
@@ -244,7 +244,7 @@ bot.connect();
 
 ## Documentation
 
-For detailed documentation and usage instructions, please refer to the [aoitelegram Wiki](https://aoitelegram-dev.surge.sh/).
+For detailed documentation and usage instructions, please refer to the [aoitelegram Wiki](https://aoitelegram.vercel.app/).
 
 ## License
 
@@ -256,4 +256,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## Important
 
-`aoitelegram` utilizes the source code of the [bds.js](https://www.npmjs.com/package/bds.js) library.
+`aoitelegram` utilizes the source code of the [aoi.js](https://www.npmjs.com/package/aoi.js) library.

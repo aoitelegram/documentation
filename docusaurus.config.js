@@ -9,7 +9,7 @@ const config = {
   title: "AoiTelegram",
   tagline: "Documentation",
   favicon: "img/logo-telegramsjs.jpg",
-  url: "https://aoitelegram-dev.surge.sh",
+  url: "https://aoitelegram.vercel.app/",
   baseUrl: "/",
   organizationName: "Sempai-07",
   projectName: "AoiTelegram",

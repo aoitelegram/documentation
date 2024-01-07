@@ -83,8 +83,8 @@ import TabItem from "@theme/TabItem";
 ```js
 export default {
   name: "$await",
-  callback: async (ctx, event, database, error) => {
-    const [time = 1] = await ctx.evaluateArgs(ctx.getArgs(0, 1));
+  callback: context => {
+    const [time = 1] = context.splits;
     return new Promise((res) => setTimeout(() => res(""), time * 1000));
   },
 };
@@ -94,8 +94,8 @@ export default {
 ```js
 module.exports = {
   name: "$await",
-  callback: async (ctx, event, database, error) => {
-    const [time = 1] = await ctx.evaluateArgs(ctx.getArgs(0, 1));
+  callback: context => {
+    const [time = 1] = context.splits;
     return new Promise((res) => setTimeout(() => res(""), time * 1000));
   },
 };
@@ -140,53 +140,43 @@ module.exports = {
 ## Function js
 
 - `ctx` is the function context.
-- `event` is the object passed when using a specific event.
-- `database` is an object that provides database methods.
-- `error` is an object for error handling.
 
 ## Ctx
 ```js
-Context {
-  fileName: string | { event: string };
-  type: string;
-  target: {
-    type: string;
-    value: string;
-    child: Object[];
-    pos: number;
-    line: number;
-  };
+ContextFunction {
+  data: { name: string; inside?: string; splits: string[] }[];
+  inside: string | undefined;
+  splits: (string | undefined)[];
   localVars: Collection<string, unknown>;
+  random: Collection<string, unknown>;
   array: Collection<string, unknown>;
-  object: Collection<string, unknown>;
+  callback_query: unknown[];
+  event: Context & { telegram: AoiClient };
+  telegram: AoiClient;
+  code: string;
+  command: { name: string; command?: boolean; event?: boolean };
+  isError: boolean;
+  argsCheck: (amount: number) => unknown;
+  checkArgumentTypes: (expectedArgumentTypes: string[]) => void;
+  sendError: (error: string, custom?: boolean) => unknown;
+  database: AoiManager;
+  foundFunctions: string[];
 }
 ```
 
 It has the following methods:
 
-- `argsCheck` - Check if the number of arguments is as expected.
-  - `amount` - Amount of arguments required.
-  - `event` - Event object.
+- `inside` - string of arguments that were passed.
+- `splits` - array of arguments provided by the user.
 
-- `getArgs` - Get arguments from `start` up to `end`.
-  - `start` - The start index.
-  - `end` - Amount of arguments to be returned.
+- `argsCheck` - checks the number of arguments passed to the function.
+  - `count` - the expected number of arguments in the function.
 
-- `evaluateArgs` - Evaluate and run provided arguments.
-  - `args` - Arguments to run.
-
-- `getEvaluateArgs` - Retrieve and evaluate arguments from the `start` index up to a specified `end` count.
-  - `start` - The start index.
-  - `end` - Amount of arguments to be returned.
-
-- `getAoiArgs` - Asynchronously retrieves arguments related to AOI.
-
-- `setStopping` - Set the stopping flag for the operation.
-  - `stopping` - Flag indicating whether to stop the operation.
+- `sendError` - sends reported errors and also halts the execution of subsequent functions in the context.
+  - `text` - error text in `HTML` style.
+  - `custom` - (optional) custom error text, either user-defined or integrated into the library.
 
 - `checkArgumentTypes` - Checks whether the provided arguments match the expected argument types for a function.
-  - `argument` - Array of arguments to be checked.
-  - `errorMessage` - Object to handle error messages.
   - `expectedArgumentTypes` - Array of expected argument types
   - Types available for checking: `number`, `object`, `string`, `nan`, `undefined`, `null`, `unknown`, `boolean`. 
 
@@ -194,37 +184,26 @@ It has the following methods:
 ```js
 client.addFunction({
   name: "$log",
-  callback: async (ctx, dataEvent, database, error) => {
-    ctx.argsCheck(1, error);
-    const evaluate = await ctx.getEvaluateArgs();
-    ctx.checkArgumentTypes(evaluate, error, ["string | number | boolean"]);
-    console.log(...evaluate);
-    return undefined;
-  }
-});
-```
-```js
-client.addFunction({
-  name: "$log",
-  callback: async (ctx, dataEvent, database, error) => {
-    ctx.argsCheck(1, error);
-    const args = await ctx.getArgs(1, 2);
-    const evaluate = await ctx.evaluateArgs(args);
-    ctx.checkArgumentTypes(evaluate, error, ["string | number | boolean"]);
-    console.log(...evaluate);
-    return undefined;
+  callback: context => {
+    context.argsCheck(1);
+    context.checkArgumentTypes(["string | number | boolean"]);
+    if (context.isError) return;
+    
+    console.log(...context.splits);
+    return "";
   }
 });
 ```
 ```js
 client.addFunction({
   name: "$onlyArgsType",
-  callback: async (ctx, dataEvent, database, error) => {
-    ctx.argsCheck(2, error);
-    const evaluate = await ctx.getEvaluateArgs();
-    ctx.checkArgumentTypes(evaluate, error, ["...number"]);
+  callback: context => {
+    context.argsCheck(2);
+    context.checkArgumentTypes(["...number"]);
+    if (context.isError) return;
+    
     let text = "";
-    evaluate.forEach((elem) => text += `${elem}\n`);
+    context.splits.forEach((elem) => text += `${elem}\n`);
     return text;
   }
 });
@@ -232,72 +211,30 @@ client.addFunction({
 ```js
 client.addFunction({
   name: "$log",
-  callback: async (ctx, dataEvent, database, error) => {
-    ctx.argsCheck(1, error);
-    const evaluate = await ctx.getAoiArgs();
-    ctx.checkArgumentTypes(evaluate.splits, error, ["string | number | boolean"]);
-    console.log(evaluate.inside);
+  callback: context => {
+    context.argsCheck(1);
+    context.checkArgumentTypes(["string | number | boolean"]);
+    if (context.isError) return;
+    
+    console.log(context.inside);
     // or
-    console.log(evaluate.toString());
-    return undefined;
+    console.log(context.splits);
+    return "";
   }
 });
 ```
 ```js
 client.addFunction({
   name: "$stopping",
-  callback: async (ctx, dataEvent, database, error) => {
-    const evaluate = await ctx.getAoiArgs();
-    const args = evaluate.splits?.[0] || true;
-    if (args) ctx.setStopping(true);
-    else ctx.setStopping(false);
+  callback: context => {
+    context.sendError(context.splits.join(", "));
   }
 });
 ```
 
-## database
-
-These are all the methods available from [@aoitelegram/database](https://www.npmjs.com/package/@aoitelegram/database).
-
-## error
-
-- `errorArgs` - Sends an error message for a function with an incorrect argument count.
-
-  - `amount` - The expected number of arguments.
-  - `parameterCount` - The actual number of arguments provided.
-  - `func` - The name of the function generating the error.
-  - `line` - Line number of the error.
-
-- `errorVar` - Sends an error message for an invalid variable.
-
-  - `nameVar` - The name of the invalid variable.
-  - `func` - The name of the function generating the error.
-
-- `errorTable` - Sends an error message for an invalid table.
-  - `table` - The name of the invalid table.
-  - `func` - The name of the function generating the error.
-
-- `errorArray` - Create and send an error message for an array-related error.
-  - `name` - The name of the variable that does not exist.
-  - `func` - The name of the function causing the error.
-
-- `customError` - Creates a custom error with a specific description and function name.
-  - `description` - Custom description of the error.
-  - `func` - The name of the function where the error occurred.
-  - `line` - Line number of the error.
-
-```js
-client.addFunction({
-  name: "$error",
-  callback: async (ctx, dataEvent, database, error) => {
-    const target = ctx.target;
-    const args = await ctx.getEvaluateArgs();
-    ctx.checkArgumentTypes(args, error, ["string | undefined"]);
-    error.customError(args[1] ?? "default error", target.value, target.line);
-    return undefined;
-  }
-});
-```
+:::note{.warning}
+If you specify a function that already exists in the library, it will be overwritten. This means custom functions take precedence over basic library functions.
+:::
 
 If you want to remove a function, there is a method called `<AoiClient>.removeFunction(func: string | string[])`.
 
