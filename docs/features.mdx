@@ -7,10 +7,6 @@ Here will be a brief overview of what this library can do. This library is speci
 
 `aoitelegram` is developed by a solo developer who drew inspiration from `aoi.js`, so many elements of the library are influenced by `aoi.js`. It features custom functions, a convenient and fast launch, built-in plugin support, and database support out of the box. It is user-friendly for creating Telegram bots, distinguishing itself from `aoi.js`.
 
-`aoitelegram` is written in the source code of `bds.js`, resulting in some defects in the functioning of functions. For example, if we take the equivalent of `$ping` in `aoi.js`, we can write `$pingms` to get `24ms`, but in `aoitelegram`, it would throw an error as `$pingms` is not recognized. Therefore, specific functions that do not take arguments need to be written separately.
-
-Furthermore, if a certain function is missing in the library or custom functions, the `aoitelegram` interpreter will throw an error about it. Being a recently created library, `aoitelegram` has only a small portion of functions from Node.js and the Telegram API. Regarding functions, `aoitelegram` parses types passed to functions. While `aoi.js` only accepts strings as types, `aoitelegram` parses types such as `undefined` (including empty values), `NaN`, `number` (`float` and `integer`), `boolean`, `string`, and `null`.
-
 This is a brief overview of what I could write about `aoitelegram`. Best of luck with your development using this library ❤️.
 
 |               | aoitelegram                              | aoi.js                                    | bdfd                                   |
