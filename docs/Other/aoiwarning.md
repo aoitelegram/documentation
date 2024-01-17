@@ -6,9 +6,17 @@
 To enable this feature, you need to specify the `aoiWarning` and `autoUpdate` parameters in the `AoiClient` constructor.
 ```js
 const bot = new AoiClient({
-   autoUpdate: true, // Update to the latest version if available (beta)
-   aoiWarning: true, // Notify about a new version in the console
-   // ...other configurations
+  /** Checks for available package updates and performs an update if enabled (beta) **/
+  autoUpdate: {
+    /** Displaying messages about new versions. **/
+    aoiWarning: true,
+    /**  Whether automatic updates are enabled. **/
+    autoUpdate: true,
+    /** Whether to enable development versions. **/
+    enableDev: true,
+    /** Whether to enable beta versions. **/
+    enableBeta: true,
+  },
 });
 ```
 :::

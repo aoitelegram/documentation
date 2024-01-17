@@ -151,16 +151,31 @@ ContextFunction {
   random: Collection<string, unknown>;
   array: Collection<string, unknown>;
   callback_query: unknown[];
-  event: Context & { telegram: AoiClient };
+  event: EventContext &
+  UserFromGetMe &
+  Message &
+  MessageReactionUpdated &
+  MessageReactionCountUpdated &
+  CallbackQuery &
+  InlineQuery &
+  ShippingQuery &
+  PreCheckoutQuery &
+  Poll &
+  PollAnswer &
+  ChatMemberUpdated &
+  ChatJoinRequest &
+  ChatBoostUpdated &
+  ChatBoostRemoved & { telegram: AoiClient };
   telegram: AoiClient;
   code: string;
-  command: { name: string; command?: boolean; event?: boolean };
+  command: { name: string; hasCommand?: boolean; hasEvent?: boolean };
   isError: boolean;
   argsCheck: (amount: number) => unknown;
   checkArgumentTypes: (expectedArgumentTypes: string[]) => void;
   sendError: (error: string, custom?: boolean) => unknown;
-  database: AoiManager;
+  database: AoiManager | MongoDBManager;
   foundFunctions: string[];
+  suppressErrors?: string;
 }
 ```
 
@@ -236,7 +251,29 @@ client.addFunction({
 If you specify a function that already exists in the library, it will be overwritten. This means custom functions take precedence over basic library functions.
 :::
 
-If you want to remove a function, there is a method called `<AoiClient>.removeFunction(func: string | string[])`.
+### `<AoiClient>.removeFunction(func: string | string[])`
+
+If you want to remove a function, there is a method called
+
+### `<AoiClient>.editFunction(options: DataFunction | DataFunction[]): boolean`
+
+Edits or adds a data function to the available functions.
+
+- `options`: A single `DataFunction` or an array of `DataFunction` objects.
+- Returns `true` after successfully editing or adding the function(s).
+
+### `<AoiClient>.getFunction(options: string | string[])`
+
+Retrieves a function from the available functions.
+
+- `options`: A single function name or an array of function names.
+- Returns the requested function(s).
+
+### `<AoiClient>.countFunction`
+
+Gets the count of available functions.
+
+- Returns the number of functions currently available.
 
 ## Function aoitelegram
 
