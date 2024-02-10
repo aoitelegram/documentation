@@ -5,7 +5,7 @@ This function returns the count of arguments passed in a command, excluding the 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $argsCount

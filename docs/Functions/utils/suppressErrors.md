@@ -11,7 +11,7 @@ This function sets a custom error message to be displayed when errors occur duri
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "exampleCommand",
   code: `
     $suppressErrors[An error occurred while processing the command.]

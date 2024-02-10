@@ -12,7 +12,7 @@ takes an integer value and returns the string element at the given index.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textAt[text;1]]`,
 });

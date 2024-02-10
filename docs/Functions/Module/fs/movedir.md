@@ -12,7 +12,7 @@ This function uses the fs-extra library to move a file or directory from the spe
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $movedir[source/path/directory; destination/path/new_directory]

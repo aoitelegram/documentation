@@ -7,7 +7,7 @@ Returns the bot token
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "token",
   code: `$replyMessage[Token: $clientToken]`,
 });

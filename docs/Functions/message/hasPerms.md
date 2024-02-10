@@ -12,7 +12,7 @@ Will check if the user has the listed permission and return boolean.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $replyMessage[$hasPerms[can_post_stories]]

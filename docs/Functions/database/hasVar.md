@@ -12,7 +12,7 @@ Returns a boolean value indicating whether the specified variable exists or not.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "has",
   code: `
     $print[$hasVar[var]]

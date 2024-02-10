@@ -11,7 +11,7 @@ This function allows you to retrieve a specific word from the message text.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message,
   code: `
     $sendMessage[$text]

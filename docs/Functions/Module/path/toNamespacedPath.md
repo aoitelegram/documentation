@@ -11,7 +11,7 @@ This function converts a given path to its namespace-prefixed form using the pat
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $toNamespacedPath[C:\\some\\path]

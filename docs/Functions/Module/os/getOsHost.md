@@ -5,7 +5,7 @@ This function retrieves the hostname of the operating system using the os module
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $getOsHostname

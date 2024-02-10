@@ -5,7 +5,7 @@ This function retrieves the architecture of the operating system using the os mo
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $getOsArch

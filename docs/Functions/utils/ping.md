@@ -1,18 +1,20 @@
 # $ping
 
-## Usage
+Performs a ping operation to measure response time.
 
-This function is used to retrieve the ping time to the server. It returns the ping time in milliseconds.
+## Parameters
 
-### Example
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| target    | Optional. Specifies the target to ping. Values can be "client" or "db". Default is "client". |
 
-```javascript
-client.command({
+## Example
+
+```js
+<AoiClient>.addCommand({
   name: "ping",
   code: `
-  $sendMessage[Bot ping: $ping ms]
-  `,
+    $ping
+   `,
 });
 ```
-
-In this example, the function is used to retrieve the ping time to the server and display it.

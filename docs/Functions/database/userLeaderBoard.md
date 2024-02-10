@@ -27,7 +27,7 @@ This will return the position of the leaderboard
 ## Examples
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "userLeaderBoard",
   code: `
     $sendMessage[$chatLeaderBoard[$chatId;examples;;{top}. {first_name} - {value} ⏳️\n;10]]

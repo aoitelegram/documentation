@@ -1,4 +1,5 @@
 # Handler Loop
+
 The following methods, presented below, handle the repetition of a specified code at defined intervals without interruption.
 
 ## Parameters
@@ -10,7 +11,11 @@ The following methods, presented below, handle the repetition of a specified cod
 
 ## Example
 
-Also, the `$break` function is available, which stops the loop repetition.
+### Available Features
+Within `loop` commands, the following functions are available:
+- `$break` - halt the loop command.
+- `$continue` - skip the current iteration.
+- `$index` - returns the number of times the loop has been executed so far.
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -18,12 +23,25 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="javascript" label="JavaScript">
 ```js
-client.loopCommand({
+<AoiClient>.loopCommand({
   every: 5000,
   code: `
-    $print[Count: $getVar[count]] 
-    $setVar[count;$math[$getVar[count] + 1]]
-    $if[$getVar[count]==10;$break]
+    $if[$index==5]
+     $break
+    $else
+     $print[Current index: $index]
+    $endif
+  `
+})
+
+<AoiClient>.loopCommand({
+  every: 5000,
+  code: `
+    $if[$index==5]
+     $continue
+    $else
+     $print[Current index: $index]
+    $endif
   `
 })
 ```
@@ -36,8 +54,7 @@ export default {
   every: 5000,
   type: "loop",
   code: `
-    $print[Count: $getVar[count]] 
-    $setVar[count;$math[$getVar[count] + 1]]
+    $print[Count: $index]
   `
 };
 ```
@@ -48,8 +65,7 @@ module.exports = {
   every: 5000,
   type: "loop",
   code: `
-    $print[Count: $getVar[count]] 
-    $setVar[count;$math[$getVar[count] + 1]]
+    $print[Count: $index] 
   `
 };
 ```

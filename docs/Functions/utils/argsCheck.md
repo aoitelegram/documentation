@@ -12,7 +12,7 @@ This function checks conditions related to the number of arguments in a command 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $argsCheck[== 2; Invalid number of arguments. Use: !misc arg1 arg2]

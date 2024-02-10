@@ -12,7 +12,7 @@ This function sets the bot's name for a specific language.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "setName",
   code: `
     $setMyName[MyBot;en]

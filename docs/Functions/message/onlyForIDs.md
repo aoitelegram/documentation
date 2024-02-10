@@ -12,7 +12,7 @@ Will check if the command was executed by any user of the listed user IDs and re
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $onlyForIDs[134567866;6786678;56774;No perms id]

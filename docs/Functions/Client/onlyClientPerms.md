@@ -13,7 +13,7 @@ Only if bot permissions
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `
    $onlyClientPerms[can_pin_messages;Error permissions: can_pin_messages]

@@ -11,7 +11,7 @@ This function retrieves the name of the bot in a specified language.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getBotName",
   code: `
     $getMyName[en] // Replace "en" with the actual language code

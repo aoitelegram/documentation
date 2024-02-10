@@ -7,7 +7,7 @@ Return the current user id
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$fromId]`,
 });

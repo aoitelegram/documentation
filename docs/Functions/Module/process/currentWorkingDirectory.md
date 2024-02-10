@@ -5,7 +5,7 @@ This function retrieves the current working directory using the process module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $currentWorkingDirectory

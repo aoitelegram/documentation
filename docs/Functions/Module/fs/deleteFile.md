@@ -11,7 +11,7 @@ This function deletes a file at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $deleteFile[path/to/file.txt]

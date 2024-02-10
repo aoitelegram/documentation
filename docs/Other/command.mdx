@@ -2,6 +2,10 @@
 
 Use this method to track commands.
 
+:::note{.warning}
+Now `command` can be used for multiple tracking purposes (starting from `0.7.0` and above).
+:::
+
 ## Parameters
 
 | Parameter             | Description                                                                  |
@@ -20,7 +24,7 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="javascript" label="JavaScript">
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "ping",
   typeChannel: "private",
   code: `$replyMessage[Bot ping: $ping ms]`,

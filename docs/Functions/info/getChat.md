@@ -12,7 +12,7 @@ This function retrieves information about a chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getChatInfo",
   code: `
     $getChat[-100123456789;title] // Replace -100123456789 with the actual chat ID

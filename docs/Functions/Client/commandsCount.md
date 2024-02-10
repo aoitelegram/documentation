@@ -7,7 +7,7 @@ Returns the bot commands count
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[Size: $commandsCount]`,
 });

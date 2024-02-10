@@ -13,7 +13,7 @@ This function is used to log the specified text to the console.
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "logtext",
   code: `
   $print[This is a log message.]

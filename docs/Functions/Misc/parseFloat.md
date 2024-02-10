@@ -11,7 +11,7 @@ This function parses a string argument or a series of arguments into a floating-
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "parseFloatCommand",
   code: `
     $replyMessage[Result: $parseFloat[3.14]]

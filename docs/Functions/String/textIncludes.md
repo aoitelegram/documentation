@@ -12,7 +12,7 @@ Returns whether the provided string contains some of the given words
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textIncludes[text;x]]`,
 });

@@ -11,7 +11,7 @@ This function parses a given path into an object using the path module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $parsePath[some/path/file.txt]

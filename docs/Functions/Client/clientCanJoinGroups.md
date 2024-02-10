@@ -7,7 +7,7 @@ if the bot can be invited to groups
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$clientCanJoinGroups]`,
 });

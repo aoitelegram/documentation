@@ -14,7 +14,7 @@ This `$if` does not have access to the function's context.
 
 ## Examples
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "ifv4",
   code: `
   $if[1==1&&2==1]

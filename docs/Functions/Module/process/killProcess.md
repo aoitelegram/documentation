@@ -5,7 +5,7 @@ This function kills the current Node.js process and its child processes using th
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $killProcess

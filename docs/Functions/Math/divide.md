@@ -12,7 +12,7 @@ This function divides the given args
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$divide[4;7]]

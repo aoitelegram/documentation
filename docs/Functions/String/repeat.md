@@ -12,7 +12,7 @@ Repeat the given text, certain amount of times.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$repeat[text ;10]]`,
 });

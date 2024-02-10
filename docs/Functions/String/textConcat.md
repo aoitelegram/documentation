@@ -12,7 +12,7 @@ Concatenates the provided texts.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textConcat[text ; text 2]]`,
 });

@@ -12,7 +12,7 @@ Returns will multiplicate given number
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$multi[6;8]]

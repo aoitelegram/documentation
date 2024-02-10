@@ -11,7 +11,7 @@ This function resolves a given path into an absolute path using the path module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $resolvePath[some/../path]

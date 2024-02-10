@@ -12,7 +12,7 @@ Splits an object Stringinto an array of strings by splitting the string with the
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$split[text, g;,]]`,
 });

@@ -7,7 +7,7 @@ Unique identifier for this user or bot. This number may have more than 32 signif
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$clientId]`,
 });

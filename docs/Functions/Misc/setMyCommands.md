@@ -13,7 +13,7 @@ This function sets the list of commands supported by a bot for a specific langua
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "setBotCommands",
   code: `
     $setMyCommands[en;{ bot_command: 'botCommand' };{ command: '/start', description: 'Start the bot' }]

@@ -11,7 +11,7 @@ Will check if the given NaN is valid.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
    $isNaN[NaN]

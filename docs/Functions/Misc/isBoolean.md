@@ -11,7 +11,7 @@ Will check if the given boolean is valid.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
    $isBoolean[true]

@@ -13,7 +13,7 @@ This function is used to introduce a delay in seconds before continuing with the
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "delayExecution",
   code: `
   $await[5]

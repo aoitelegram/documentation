@@ -12,7 +12,7 @@ Returns operation / the remainder when dividing.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$modulo[16;6]]

@@ -11,7 +11,7 @@ Trims leading and trailing whitespaces from a given string.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$trim[TkXh]]`,
 });

@@ -11,7 +11,7 @@ This function uses the fs-extra library to remove a file or directory at the spe
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $removedir[path/to/file_or_directory]

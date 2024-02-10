@@ -7,7 +7,7 @@ Username, for private chats, supergroups and channels if available
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$clientUsername]`,
 });

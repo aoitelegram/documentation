@@ -11,7 +11,7 @@ Will execute given code in your console
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "exec",
   code: `
     \`\`\`

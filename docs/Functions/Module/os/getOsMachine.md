@@ -5,7 +5,7 @@ This function retrieves the machine hardware name of the operating system using 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $getOsMachine

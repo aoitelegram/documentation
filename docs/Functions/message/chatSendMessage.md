@@ -12,7 +12,7 @@ This function sends a message to a specified chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "sendMessageToChat",
   code: `
     $chatSendMessage[-100123456789;Hello, this is a test message] // Replace -100123456789 with the actual chat ID

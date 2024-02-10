@@ -12,7 +12,7 @@ Returns will sum-up two given number.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$sum[78;89]]

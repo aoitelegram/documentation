@@ -14,7 +14,7 @@ Makes a JSON-based HTTP request to the specified API endpoint.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $jsonRequest[https://api.example.com/data;{ "key": "value" };result;Custom Error Message]

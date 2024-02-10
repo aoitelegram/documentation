@@ -11,7 +11,7 @@ Returns will remove all values after a decimal point
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$trunc[79]]

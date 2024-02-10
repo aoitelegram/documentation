@@ -12,7 +12,7 @@ Checks if the given text contains any of the specified characters.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $checkContains[Hello; H; e; l; l; o] // Returns true

@@ -7,7 +7,7 @@ Return `aoitelegram` version
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "version",
   code: `$replyMessage[AoiTelegram version: $packageVersion]`,
 });

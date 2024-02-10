@@ -19,6 +19,12 @@ The following methods, which will be presented below, are responsible for repeat
 
 ## Example
 
+### Available Features
+Within `loop` commands, the following functions are available:
+- `$break` - halt the loop command.
+- `$continue` - skip the current iteration.
+- `$index` - returns the number of times the loop has been executed so far.
+
 Additionally, there is the `$awaitedData[pathProperty?]` function, used to retrieve data passed using `$loop`. Also, the `$break` function is available, which stops the loop.
 
 import Tabs from "@theme/Tabs";
@@ -27,18 +33,20 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="javascript" label="JavaScript">
 ```js
-client.command({
+<AoiClient>.addCommand({
    name: "loop",
    code: `$loop[awaited;1s;{ "data": $usernameID }]
   `
 })
  
-client.awaitedCommand({
+<AoiClient>.awaitedCommand({
   awaited: "awaited",
   code: `
    $print[$awaitedData]
    $replyMessage[Text $awaitedData[data]]
-   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+   $if[$index==10]
+    $break
+   $endif
  `
 })
 ```
@@ -52,7 +60,9 @@ export default {
   code: `
    $print[$awaitedData]
    $replyMessage[Text $awaitedData[data]]
-   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+   $if[$index==10]
+    $break
+   $endif
  `
 };
 ```
@@ -64,7 +74,9 @@ module.exports = {
   code: `
    $print[$awaitedData]
    $replyMessage[Text $awaitedData[data]]
-   $if[$getVar[break]==10;$break;$setVar[break;$math[$getVar[break] + 1]]]
+   $if[$index==10]
+    $break
+   $endif
  `
 };
 ```

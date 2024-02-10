@@ -14,7 +14,7 @@ This function adds a custom emoji reaction to a message in a specified chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "addReaction",
   code: `
     $addCustomReaction[custom_emoji;true;123456789;-100123456789] // Replace 123456789 with the actual message ID and chat ID

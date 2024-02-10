@@ -11,7 +11,7 @@ Evaluates JavaScript code and returns the result.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $jsEval[2 + 2]  // Returns the result of the JavaScript expression

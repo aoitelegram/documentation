@@ -11,7 +11,7 @@ Will check if the given string is valid.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
    $isString[true]

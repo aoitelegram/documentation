@@ -13,7 +13,7 @@ Replaces the matched text with the provided replacement
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$replace[text;text;lol]]`,
 });

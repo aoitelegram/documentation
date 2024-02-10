@@ -11,7 +11,7 @@ Checks if the specified user (or the message sender if not specified) has restri
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $isRestricted

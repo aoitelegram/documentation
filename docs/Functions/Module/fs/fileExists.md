@@ -11,7 +11,7 @@ This function checks if a file exists at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $fileExists[path/to/file.txt]

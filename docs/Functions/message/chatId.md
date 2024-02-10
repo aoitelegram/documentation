@@ -11,7 +11,7 @@ Will return the chat ID of the given chat id
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $replyMessage[$chatId]

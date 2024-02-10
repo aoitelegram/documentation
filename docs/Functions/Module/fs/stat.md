@@ -11,7 +11,7 @@ This function retrieves information about the specified file or directory using 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $stat[path/to/file_or_directory]

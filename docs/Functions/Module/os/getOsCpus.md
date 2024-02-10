@@ -5,7 +5,7 @@ This function retrieves information about the CPU cores on the operating system 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $getOSTCpus

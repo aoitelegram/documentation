@@ -11,7 +11,7 @@ This function checks if a directory exists at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $dirExists[path/to/directory]

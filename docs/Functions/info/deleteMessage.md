@@ -12,7 +12,7 @@ This function deletes a message in a specified chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "deleteMessageCommand",
   code: `
     $deleteMessage[-100123456789;987654321] // Replace -100123456789 and 987654321 with the actual chat ID and message ID

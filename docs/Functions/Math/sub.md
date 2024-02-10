@@ -12,7 +12,7 @@ Returns will substract two given number.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$sub[6;89]]

@@ -12,7 +12,7 @@ This function sets the bot's description for a specific language.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "setDescription",
   code: `
     $setMyDescription[This is my bot;en]

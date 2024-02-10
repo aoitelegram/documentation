@@ -13,7 +13,7 @@ This function allows you to send a reply message with the specified text. If the
 ### Example
 
 ```javascript
-$client.command({
+$<AoiClient>.addCommand({
   name: "sendReply",
   code: `
   $replyMessage[This is a reply message.]

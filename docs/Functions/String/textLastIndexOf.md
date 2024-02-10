@@ -12,7 +12,7 @@ Returns the index of the last string element matched.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textLastIndexOf[text;t]]`,
 });

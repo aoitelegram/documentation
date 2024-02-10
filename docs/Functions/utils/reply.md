@@ -11,7 +11,7 @@ Sets the reply behavior for the current message.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $reply[true]

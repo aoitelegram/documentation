@@ -5,7 +5,7 @@ This function returns the current year.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getYear",
   code: `
     $year

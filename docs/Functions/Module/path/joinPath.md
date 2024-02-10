@@ -11,7 +11,7 @@ This function joins path segments using the path module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $joinPath[path/part1; path/part2; file.txt]

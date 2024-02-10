@@ -5,7 +5,7 @@ This function returns the current day of the week as a number (0 for Sunday, 1 f
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getDay",
   code: `
     $day

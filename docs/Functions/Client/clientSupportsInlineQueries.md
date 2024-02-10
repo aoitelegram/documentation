@@ -7,7 +7,7 @@ if the bot supports inline queries
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$clientSupportsInlineQueries]`,
 });

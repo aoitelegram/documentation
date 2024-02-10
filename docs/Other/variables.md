@@ -9,7 +9,7 @@ Variables are useful tools in programming that allow you to store values that ca
 One way to do this is by using the following code snippet in your main file (usually named `index.js`):
 
 ```js
-client.variables({
+<AoiClient>..variables({
   variableName: boolean,
   variableName: number,
   variableName: object,
@@ -17,12 +17,12 @@ client.variables({
 }, table?);
 ```
 
-The `client.variables()` function takes an object as an argument, where each property represents a variable name and its corresponding value. You can assign variables to a certain table. However, this is optional and will default to "main".
+The `<AoiClient>..variables()` function takes an object as an argument, where each property represents a variable name and its corresponding value. You can assign variables to a certain table. However, this is optional and will default to "main".
 
 For example:
 
 ```js title="index.js"
-client.variables(
+<AoiClient>..variables(
   {
     blacklisted: false,
     money: 0,

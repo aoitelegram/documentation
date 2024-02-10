@@ -7,7 +7,7 @@ if this user added the bot to the attachment menu
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$isAddedToAttachmentMenu]`,
 });

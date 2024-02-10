@@ -24,7 +24,7 @@ This will return the position of chats
 ## Examples
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "chatLeaderBoard",
   code: `
     $sendMessage[$chatLeaderBoard[examples;;{top}. {title} - {value} ⏳️\n;10]]

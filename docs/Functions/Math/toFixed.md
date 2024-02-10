@@ -12,7 +12,7 @@ Returns formats a number using fixed point notation.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$toFixed[67.79856;2]]

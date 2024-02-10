@@ -12,7 +12,7 @@ Use this function when you need to tell the user that something is happening on 
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message,
   code: `
     $sendChatAction

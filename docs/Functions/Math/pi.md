@@ -5,7 +5,7 @@ Represents the ratio of the circumference of a circle to its diameter, approxima
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$pi]

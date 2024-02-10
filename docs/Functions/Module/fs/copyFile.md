@@ -12,7 +12,7 @@ This function copies a file from the specified source path to the specified dest
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $copyFile[source/path/file.txt; destination/path/file_copy.txt]

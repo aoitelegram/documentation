@@ -12,7 +12,7 @@ This function writes content to a file at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $writeFile[path/to/file.txt; This is some content.]

@@ -13,7 +13,7 @@ This function sets a new value for a specified key in an object.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "setValue",
   code: `
     $setObjectValue[{ "name": "John", "age": 25, "city": "New York" };age;30] // Replace the object with your own

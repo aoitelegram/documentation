@@ -12,7 +12,7 @@ Returns `main` raised to a power `index`, that is, the value of the expression
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$pow[6;100]]

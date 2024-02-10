@@ -11,7 +11,7 @@ Returns the smallest of zero or more numbers.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$min[5;7;9;2;0]]

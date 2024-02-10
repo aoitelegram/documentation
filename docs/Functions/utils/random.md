@@ -13,7 +13,7 @@ Generates a random integer within a specified range.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $random[1; 100]          // Returns a random number between 1 and 100

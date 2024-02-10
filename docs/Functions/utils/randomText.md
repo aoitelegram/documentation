@@ -11,7 +11,7 @@ Selects a random item from the provided list.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $randomText[Option 1; Option 2; Option 3]  // Returns a random option from the list

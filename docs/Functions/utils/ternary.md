@@ -10,7 +10,7 @@
 
 ## Example
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "ternary",
   code: `$sendMessage[$ternary[$message[1]==src;True: src;False: src!=$message[1]]]`
 })

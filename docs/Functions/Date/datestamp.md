@@ -5,7 +5,7 @@ This function returns the current timestamp.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getTime",
   code: `
     $datestamp

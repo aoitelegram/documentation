@@ -5,7 +5,7 @@ This function retrieves the system uptime in seconds using the process module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $uptime

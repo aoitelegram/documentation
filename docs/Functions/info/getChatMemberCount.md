@@ -13,7 +13,7 @@ Return the number of members in a chat
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "version",
   code: `$replyMessage[Member count: $getChatMemberCount]`,
 });

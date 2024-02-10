@@ -11,7 +11,7 @@ Returns a number rounded to the nearest integer.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$round[6.5]]

@@ -149,6 +149,7 @@ ContextFunction {
   splits: (string | undefined)[];
   localVars: Collection<string, unknown>;
   random: Collection<string, unknown>;
+  buffer: Collection<string, Buffer>;
   array: Collection<string, unknown>;
   callback_query: unknown[];
   event: EventContext &
@@ -174,7 +175,7 @@ ContextFunction {
   checkArgumentTypes: (expectedArgumentTypes: string[]) => void;
   sendError: (error: string, custom?: boolean) => unknown;
   database: AoiManager | MongoDBManager;
-  foundFunctions: string[];
+  foundFunctions: { func: string; negative: boolean }[];
   suppressErrors?: string;
 }
 ```
@@ -251,6 +252,10 @@ client.addFunction({
 If you specify a function that already exists in the library, it will be overwritten. This means custom functions take precedence over basic library functions.
 :::
 
+:::note{.warning}
+Starting from `aoitelegram@0.7.0` and above, the `<AoiClient>.addFunction` method cannot modify a function, and `<AoiClient>.editFunction` cannot add a function as before. Errors will occur when attempting to do so. To avoid such usage, use `<AoiClient>.hasFunction` or `<AoiClient>.ensureFunction`, which handle everything for you.
+:::
+
 ### `<AoiClient>.removeFunction(func: string | string[])`
 
 If you want to remove a function, there is a method called
@@ -275,6 +280,22 @@ Gets the count of available functions.
 
 - Returns the number of functions currently available.
 
+### `<AoiClient>.ensureFunction(options: DataFunction | DataFunction[]): AoiClient`
+
+Ensures the registration of a data function or an array of data functions.
+
+- `options`: A single data function or an array of data functions.
+- Returns the `AoiClient` instance for method chaining.
+
+### `<AoiClient>.hasFunction(options: string | string[]): string | string[]`
+
+Checks if the specified function(s) exist(s).
+
+- `options`: The name of the function or an array of function names.
+- Returns True if the function(s) exist(s).
+
 ## Function aoitelegram
 
-**In development**
+### `$argumentsCount`
+
+- Returns the number of function args

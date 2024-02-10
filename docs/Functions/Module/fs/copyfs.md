@@ -12,7 +12,7 @@ This function uses the fs-extra library to copy files or directories from the sp
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $copyfs[source/path/file.txt; destination/path/file_copy.txt]

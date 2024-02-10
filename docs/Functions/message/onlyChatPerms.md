@@ -12,7 +12,7 @@ Will check if the chat has the listed permission and return a error message if n
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $onlyChatPerms[can_send_documents;No perms, Error]

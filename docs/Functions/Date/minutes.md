@@ -5,7 +5,7 @@ This function returns the current minutes of the hour.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getMinutes",
   code: `
     $minutes

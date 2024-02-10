@@ -11,7 +11,7 @@ This function reads the contents of a file at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $readFile[path/to/file.txt]

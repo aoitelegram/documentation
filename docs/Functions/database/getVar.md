@@ -14,7 +14,7 @@ This function allows you to retrieve the value of a variable from a specified ta
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "getVar",
   code: `
   $getVar[userCount;stats]

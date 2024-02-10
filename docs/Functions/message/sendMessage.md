@@ -13,7 +13,7 @@ This function allows you to send a message with the specified text.
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "sendTextMessage",
   code: `
   $sendMessage[This is a text message.]

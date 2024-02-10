@@ -13,7 +13,7 @@ This function finds a specific property in an object and returns the property al
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "findProperty",
   code: `
     $findObjectProperty[{ "name": "John", "age": 25, "city": "New York" };age;true]

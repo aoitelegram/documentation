@@ -5,7 +5,7 @@ This function retrieves the operating system platform using the os module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $platform

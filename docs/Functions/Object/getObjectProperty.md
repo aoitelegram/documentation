@@ -12,7 +12,7 @@ Returns the value located in the object.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "object",
   code: `
     $let[object;{ "message": { "message" : true } }]

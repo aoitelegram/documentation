@@ -11,7 +11,7 @@ This function retrieves the short description of the bot in a specified language
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getBotShortDescription",
   code: `
     $getMyShortDescription["en"] // Replace "en" with the actual language code

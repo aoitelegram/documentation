@@ -7,7 +7,7 @@ Return the current last name
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$lastName]`,
 });

@@ -1,0 +1,96 @@
+---
+sidebar_position: 7
+---
+
+# Callback Functions
+
+`callback` introduces a new way of creating functions in `aoitelegram` that are more flexible and have slightly more capabilities than regular [custom functions](./pluginmanager.mdx).
+
+## Usage
+```
+$callback[callbackId;...args]
+```
+
+| Parameters | Description |
+| --------------- | -------------- |
+| callbackId      | Named callback function |
+| ...args               | Arguments to be passed |
+
+## Available Functions
+In callback functions with the `aoitelegram` syntax, the following functions are available:
+- `$arguments` - array of arguments passed
+- `$argumentsCount` - the number of function args
+- `$return` - what to output upon completion of the function (after the interpreter reaches `$return`, reading will stop and the result will be output)
+
+## Examples
+
+```js
+<AoiClient>.addCallback({
+  name: "ids",
+  type: "js",
+  callback: ({ splits }) => splits.join(" "),
+});
+
+<AoiClient>.addCallback({
+  name: "ids",
+  type: "aoitelegram",
+  code: `
+    $return[$argumentsCount, $arguments]
+  `
+});
+```
+
+## Examples Module
+
+Furthermore, to prevent cluttering the main file, the `LoadCommands` class has been enhanced with the `loadCallbacks` method for loading callback functions:
+
+```js
+const loader = new LoadCommands(<AoiClient>);
+loader.loadCallbacks("./callback");
+```
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+      <TabItem value="esm" label="ESModule">
+```js
+export default {
+  name: "ids",
+  type: "js",
+  callback: context => {
+    const [...args] = context.splits;
+    return args.map(arg => Number(arg));
+  },
+};
+
+export default {
+  name: "ids",
+  type: "aoitelegram",
+  code: `
+   $return[Ids count: $argumentsCount, id: $arguments]
+  `
+};
+```
+      </TabItem>
+      <TabItem value="commonjs" label="Commonjs">
+```js
+module.exports = {
+  name: "ids",
+  type: "js",
+  callback: context => {
+    const [...args] = context.splits;
+    return args.map(arg => Number(arg));
+  },
+};
+
+module.exports = {
+  name: "ids",
+  type: "aoitelegram",
+  code: `
+   $return[Ids count: $argumentsCount, id: $arguments]
+  `
+};
+```
+      </TabItem>
+    </Tabs>

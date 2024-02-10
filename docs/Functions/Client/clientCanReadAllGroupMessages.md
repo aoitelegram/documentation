@@ -7,7 +7,7 @@ if privacy mode is disabled for the bot
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$clientCanReadAllGroupMessages]`,
 });

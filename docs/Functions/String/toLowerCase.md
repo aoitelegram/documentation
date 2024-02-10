@@ -11,7 +11,7 @@ Converts a string to lowercase.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$toLowerCase[TEXT]]`,
 });

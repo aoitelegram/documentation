@@ -7,7 +7,7 @@ Return command name
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[Usage: $commandName]`,
 });

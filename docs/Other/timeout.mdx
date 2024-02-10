@@ -1,4 +1,5 @@
 # Handler Timeout
+
 The Timeout function simplifies the creation of actions that require time. The timeout cannot use message context, meaning you can't use methods like `$replyMessage` and similar functions. Additionally, the time limit depends on `setTimeout` in Node.js. Even if you restart the bot, the timeout will continue to work.
 
 ## Parameters
@@ -8,6 +9,11 @@ The Timeout function simplifies the creation of actions that require time. The t
 | timeoutId  | The ID of the timeout to which the event will react |
 | time | Time after which the timeout should trigger (not less than 5000 milliseconds) |
 | timeoutData | Object to be passed to the timeout |
+
+### $stopTimeout
+| Parameter | Description |
+| --------- | ----------- |
+| timeoutId | stop timeout command by id |
 
 ### timeoutCommand
 | Parameter  | Description                               |
@@ -25,12 +31,12 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="javascript" label="JavaScript">
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "timeout",
   code: `$setTimeout[awaitData;6s;{ "authorID": $usernameID, "username": "$username" }]`
 })
 
-client.timeoutCommand({
+<AoiClient>.timeoutCommand({
   id: "awaitData",
   code: `$print[Timeout data ;$timeoutData[authorID];$timeoutData]`
 })

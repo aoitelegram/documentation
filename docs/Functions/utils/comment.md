@@ -11,7 +11,7 @@ A command for adding comments to your code. It doesn't perform any action and se
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $comment[This is a comment] // This comment doesn't affect the code execution

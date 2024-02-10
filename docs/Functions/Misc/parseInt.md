@@ -11,7 +11,7 @@ This function parses a string argument or a series of arguments into an integer.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "parseIntCommand",
   code: `
     $replyMessage[Result: $parseInt[42]]

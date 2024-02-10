@@ -5,7 +5,7 @@ This function returns the current milliseconds of the current second.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getMilliseconds",
   code: `
     $milliseconds

@@ -5,7 +5,7 @@ This function exits the current Node.js process using the process module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $exitProcess

@@ -11,7 +11,7 @@ Checks if the given condition is valid and evaluates it.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $checkCondition[true]

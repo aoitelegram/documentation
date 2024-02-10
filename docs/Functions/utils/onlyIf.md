@@ -27,7 +27,7 @@ $onlyIf\[value&gt;=value2;error message\]
 $onlyIf\[value&lt;=value2;error message\]
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "special",
   code: `Special Command
 $onlyIf[15==6;15 doesn't equal 6!]`,

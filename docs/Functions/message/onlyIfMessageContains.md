@@ -13,7 +13,7 @@ Will check if the message contains the given text and if not return a error mess
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $onlyIfMessageContains[$message;true;false;Only true/false]

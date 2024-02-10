@@ -12,7 +12,7 @@ Returns the character at the provided index.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$chartAt[text;1]]`,
 });

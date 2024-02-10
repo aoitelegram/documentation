@@ -11,7 +11,7 @@ Trim the start and end of the text.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textTrim[     text    ]]`,
 });

@@ -11,7 +11,7 @@ This function retrieves the memory usage in megabytes for the specified type usi
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $ram

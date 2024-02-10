@@ -4,24 +4,48 @@
 
 /* Define your primary color and variations */
 :root {
-  --primary-color: #059ce1;
-  --primary-color-dark: #36bac3;
-  --primary-color-darker: #239097;
-  --primary-color-darkest: #2c8d92;
-  --primary-color-light: #2d989d;
-  --primary-color-lighter: #359099;
-  --primary-color-lightest: #3cadab;
+  --color-primary: #2563eb;
+  --color-primary-dark: #1554e0;
+  --color-primary-darker: #1350d4;
+  --color-primary-darkest: #1042ae;
+  --color-primary-light: #3e75ed;
+  --color-primary-lighter: #4a7eee;
+  --color-primary-lightest: #7098f2;
   --code-font-size: 95%;
+  --font-family-monospace: 'Fira Code', 'Meslo NGF', 'JetBrains Mono', 'Menlo', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --link-color: hsl(235, 85%, 65%);
+  --footer-link-color: hsl(235, 85%, 82%);
+  --navbar-background-color: #4752c4;
+  --menu-link-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%) hue-rotate(223deg) brightness(104%) contrast(98%);
+  --navbar-height: 64px;
+  --navbar-link-color: #e5e7eb;
+  --navbar-link-active-color: #e5e7eb;
+  --navbar-link-hover-color: #e5e7eb;
+  --font-weight-semibold: 700;
   --highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* Adjust the color palette for dark mode */
-[data-theme="dark"] {
-  --primary-color: #7494ec;
-  --primary-color-dark: #557ce8;
-  --primary-color-darker: #4670e6;
-  --primary-color-darkest: #1e50d9;
-  --primary-color-light: #93acf0;
-  --primary-color-lighter: #a2b8f2;
-  --primary-color-lightest: #d1dcf9;
+html[data-theme='dark'] {
+  --color-primary: #81d4fa;
+  --color-primary-dark: #5dc8f9;
+  --color-primary-darker: #4ac1f8;
+  --color-primary-darkest: #14aff6;
+  --color-primary-light: #a5e0fb;
+  --color-primary-lighter: #b8e7fc;
+  --color-primary-lightest: #eef9fe;
+  --discord-api-types-paper-drop-shadow-4: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+  --background-color: #1d1d1d;
+  --navbar-background-color: #4752c4;
+  --link-color: hsl(235, 85%, 82%);
+  --highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+.footer--dark {
+  --tw-text-opacity: 1;
+  --footer-color: rgba(229, 231, 235, var(--tw-text-opacity));
+  --footer-title-color: rgba(229, 231, 235, var(--tw-text-opacity));
+
+  --footer-background-color: #4752c4;
 }

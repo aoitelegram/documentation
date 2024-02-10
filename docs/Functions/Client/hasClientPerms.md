@@ -13,7 +13,7 @@ Bot has permissions
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `
   $if[$hasClientPerms[can_pin_messages];

@@ -11,7 +11,7 @@ Will check if the chat has the listed permission and return boolean.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "message",
   code: `
     $replyMessage[$hasChatPerms[can_send_documents]]

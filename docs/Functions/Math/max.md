@@ -11,7 +11,7 @@ Returns the largest of zero or more numbers.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[$max[6;7;8;0]]

@@ -12,7 +12,7 @@ Get a part of a text, from X to Y.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$textSlice[text;2]]`,
 });

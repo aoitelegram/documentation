@@ -11,7 +11,7 @@ Converts a string to uppercase.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$toUpperCase[TkXh]]`,
 });

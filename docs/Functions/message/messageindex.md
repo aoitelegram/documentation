@@ -13,7 +13,7 @@ This function allows you to retrieve a specific word from the message text. If t
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "getMessage",
   code: `$print[$message[3]]`,
 });

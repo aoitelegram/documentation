@@ -12,7 +12,7 @@ This function retrieves information about a user's membership in a chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getUserMembership",
   code: `
     $getChatMember[123456789;status] // Replace 123456789 with the actual user ID

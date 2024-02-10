@@ -5,7 +5,7 @@ This function returns the current hour of the day (in local time).
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getHour",
   code: `
     $hour

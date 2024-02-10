@@ -13,7 +13,7 @@ This function is used to add buttons to a message.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "callback",
   code: `
   $addCallbackQuery[1;text1;test_data]
@@ -26,7 +26,7 @@ client.command({
   `,
 });
 
-client.action({
+<AoiClient>.addAction({
   data: "test_data",
   answer: true,
   code: `$print[Action]`,

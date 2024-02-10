@@ -11,7 +11,7 @@ Calculates a basic mathematical expression.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "math",
   code: `
     $replyMessage[Math 1 + 1 = $math[1 + 1]!]

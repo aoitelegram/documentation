@@ -7,7 +7,7 @@ Return the current username
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$username]`,
 });

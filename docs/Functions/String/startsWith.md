@@ -12,7 +12,7 @@ Returns whether the given text starts with the provided word.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$startsWith[text l;l]]`,
 });

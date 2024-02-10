@@ -7,7 +7,7 @@ Return the current firts name
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$firstName]`,
 });

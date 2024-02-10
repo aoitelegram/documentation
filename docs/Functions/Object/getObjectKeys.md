@@ -12,7 +12,7 @@ This function retrieves the keys of an object and returns them as a string.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getKeys",
   code: `
     $getObjectKeys[{ "name": "John", "age": 25, "city": "New York" };,] // Replace the object with your own

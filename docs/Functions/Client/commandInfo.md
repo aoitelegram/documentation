@@ -14,7 +14,7 @@ Returns the bot command info
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$commandInfo[command;code]]`,
 });

@@ -13,7 +13,7 @@ Deletes the specified variable and returns a boolean value indicating whether th
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "delete",
   code: `
     $print[$deleteVar[var]]

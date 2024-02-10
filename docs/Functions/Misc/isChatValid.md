@@ -11,7 +11,7 @@ This function checks if the specified chat ID corresponds to a valid chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "checkChatValidity",
   code: `
     $isChatValid[$chatID] // Check the validity of the current chat

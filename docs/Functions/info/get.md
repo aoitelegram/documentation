@@ -14,7 +14,7 @@ Getting the value of a variable
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "get",
   code: `
   $var[Getting;true]

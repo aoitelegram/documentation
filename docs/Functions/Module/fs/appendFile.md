@@ -12,7 +12,7 @@ This function appends the specified content to the given file.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $appendFile[path/to/file.txt; This is some content.]

@@ -11,7 +11,7 @@ Will check if the given user is `private` chat.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
    $replyMessage[DM: $isDM]

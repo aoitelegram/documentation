@@ -15,7 +15,7 @@ This function allows you to set the value of a variable in a specified table. If
 ### Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "setVar",
   code: `
   $setVar[userCount;100;stats]

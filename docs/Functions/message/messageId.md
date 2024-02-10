@@ -9,7 +9,7 @@ None
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getMessageId",
   code: `
     $replyMessage[Current Message ID: $messageId]

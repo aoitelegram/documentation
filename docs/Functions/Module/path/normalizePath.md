@@ -11,7 +11,7 @@ This function normalizes a given path using the path module.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $normalizePath[some/../path]

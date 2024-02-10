@@ -12,7 +12,7 @@ Returns whether the given text ends with the provided word.
 ## Example
 
 ```javascript
-client.command({
+<AoiClient>.addCommand({
   name: "command",
   code: `$replyMessage[$endsWith[text l;l]]`,
 });

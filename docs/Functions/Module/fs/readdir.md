@@ -11,7 +11,7 @@ This function reads the contents of a directory at the specified path.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "misc",
   code: `
     $readdir[path/to/directory]

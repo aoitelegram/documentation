@@ -12,7 +12,7 @@ This function retrieves the values of an object and returns them as a string.
 ## Example
 
 ```js
-client.command({
+<AoiClient>.addCommand({
   name: "getValues",
   code: `
     $getObjectValues[{ "name": "John", "age": 25, "city": "New York" };, ] // Replace the object with your own
