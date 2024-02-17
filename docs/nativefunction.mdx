@@ -1,0 +1,82 @@
+---
+sidebar_position: 4
+---
+
+# Native Function
+
+These are wrapper functions that can be either local (not globally accessible in other events/commands) or global. They can be created using the `<AoiClient>.addNative` method or specified in the `<AoiClient>.options.native` class constructor. Native functions use JavaScript functions that you specify.
+
+## Capabilities of Functions
+- When creating a global native function, we can access the command context. AoiTelegram also parses incoming arguments, making working with native functions easier.
+
+```js
+import { AoiClient, type Context } from "aoitelegram";
+
+// Global functions created
+function isNumberNative(context: Context, ...args: any[]) {
+  return typeof args[0] !== "number" ? false : true;
+}
+
+const client = new AoiClient({
+  token: "BOT_TOKEN",
+  native: [isNumberNative],
+});
+
+function isStringNative(context: Context, ...args: any[]) {
+  return typeof args[0] !== "string" ? false : true;
+}
+
+client.addNative([isStringNative]);
+```
+
+- Being local, Local native functions are only available in a specific command/event. Unlike global native functions, local functions also have access only to the passed arguments.
+
+```javascript
+function sempai(args: any[]) {
+  return `${args[0]}:sempaika`;
+}
+
+client.addCommand({
+  name: "start",
+  useNative: [sempai],
+  code: "$sendMessage[$sempai[$username]]" // @SempaiJS:sempaika
+});
+
+client.addCommand({
+  name: "start2",
+  code: "$sendMessage[$sempai[$username]]" // $sempai[@SempaiJS]
+});
+```
+
+- Priorities
+-- If we use native functions in custom functions, we can access not only the specified native functions at creation but also the native functions of the command in which this function was called.
+-- The priority of native functions specified in the command is higher, meaning if we have the same names of native functions both in the custom function and in the command, the native function will be called from the command.
+
+```javascript
+// File commands/findUsers:
+function findIndex(text: string, findChar: string) {
+   return text.findIndex((char) => char === findChar);
+}
+
+export default {
+  name: "find",
+  useNative: [findIndex],
+  code: `
+    $sendMessage[Index "@": $get[text]]
+    $let[text;$testIndex[$message;@]]
+  `
+}
+
+// File index.js:
+function findIndex(text: string, findChar: string) {
+   return text.findIndex((char) => char === findChar) !== 1;
+}
+
+client.addFunction({
+  name: "$testIndex",
+  params: ["text", "findChar"],
+  useNative: "aoitelegram",
+  code: "$sendMessage[Has/index?: $findIndex[{text};{findChar}]]"
+});
+```
+In the end, `$testIndex` will output a number, even though we have a registered native function that returns a logical expression.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Custom Event
@@ -45,6 +45,10 @@ event.loadEvents("./events/", true);
 
 :::note{.warning}
 To trigger an event within `aoitelegram` code, you need to use the function `$emitData[nameEvent;...args]`
+:::
+
+:::note{.warning}
+Also, besides the events created by you, aoitelegram@0.8.0 and above supports events such as: `process:beforeExit`, `process:SIGTERM`, `process:SIGINT`, `process:worker`, `process:warning`, `process:unhandledRejection`, `process:uncaughtExceptionMonitor`, `process:uncaughtException`, `process:rejectionHandled`, `process:multipleResolves`, `process:message`, `process:exit`, `process:disconnect`
 :::
 
 ## Example of Creation

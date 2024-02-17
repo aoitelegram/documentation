@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Plugin Manager
+# Custom Function
 
 In this guide, we will explain how to create your own functions for `aoitelegram`.
 
@@ -17,26 +17,14 @@ In the `PluginManager` class constructor, it's not mandatory to specify the para
 ```javascript
 const { AoiClient, PluginManager } = require("aoitelegram");
 
-const loadPlugin = new PluginManager(true);
-// dir: functions/
-const pluginDir = loadPlugin.loadDirPlugins("./functions");
-// dir: node_modules/.aoiplugins/
-const pluginModules = loadPlugin.loadPlugins("path plugin", "commit");
-
-const bot = new AoiClient({
-  token: "",
-  customFunction: [...pluginDir, ...pluginModules],
-});
-```
-
-```javascript
-const { AoiClient, PluginManager } = require("aoitelegram");
-
 const bot = new AoiClient({
   token: "",
 });
 
-const loadPlugin = new PluginManager(true, bot);
+const loadPlugin = new PluginManager({
+   client: bot,
+   searchingForPlugins: true, // node_modules searching
+});
 // dir: functions/
 loadPlugin.loadDirPlugins("./functions");
 // dir: node_modules/.aoiplugins/
@@ -145,6 +133,7 @@ module.exports = {
 ```js
 ContextFunction {
   data: { name: string; inside?: string; splits: string[] }[];
+  negative?: boolean;
   inside: string | undefined;
   splits: (string | undefined)[];
   localVars: Collection<string, unknown>;
@@ -175,8 +164,10 @@ ContextFunction {
   checkArgumentTypes: (expectedArgumentTypes: string[]) => void;
   sendError: (error: string, custom?: boolean) => unknown;
   database: AoiManager | MongoDBManager;
-  foundFunctions: { func: string; negative: boolean }[];
+  currentFunction: string;
+  [key: string]: any;
   suppressErrors?: string;
+  packageJSON: aoitelegram;
 }
 ```
 

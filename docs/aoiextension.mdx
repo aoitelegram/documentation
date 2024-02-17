@@ -1,0 +1,77 @@
+---
+sidebar_position: 9
+---
+
+# Aoi Extension
+
+Extensions are one way to quickly and seamlessly add more capabilities to `aoitelegram`. This feature was created to allow most `js`/`ts` developers to easily enhance and interact with `aoitelegram`.
+
+## Usage
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem value="commonjs" label="Commonjs">
+```javascript
+const { AoiClient, AoiExtension } = require("aoitelegram");
+
+class Abc extends AoiExtension {
+  /** Extension name. */
+  name: string;
+  /** Extension description. */
+  description: string;
+  /** Extension version. */
+  version: string;
+  /** Version(s) of Aoi library supported by the extension. */
+  targetVersion?: string | string[];
+  /** Required extensions for this extension to function correctly. */
+  requireExtension?: string[];
+
+  /**
+   * Extension initialization.
+   */
+   init(aoitelegram) {
+     aoitelegram.on("ready", () => {
+       console.log("Ready");
+     });
+   }
+}
+
+const client = new AoiClient({
+  token: "BOT_TOKEN",
+  extension: [new Abc()],
+});
+```
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+```typescript
+import { AoiClient, AoiExtension } from "aoitelegram";
+
+class Abc extends AoiExtension {
+  /** Extension name. */
+  name: string;
+  /** Extension description. */
+  description: string;
+  /** Extension version. */
+  version: string;
+  /** Version(s) of Aoi library supported by the extension. */
+  targetVersion?: string | string[];
+  /** Required extensions for this extension to function correctly. */
+  requireExtension?: string[];
+
+  /**
+   * Extension initialization.
+   */
+   init(aoitelegram) {
+     aoitelegram.on("ready", () => {
+       console.log("Ready");
+     });
+   }
+}
+
+const client = new AoiClient({
+  token: "BOT_TOKEN",
+  extension: [new Abc()],
+});
+</TabItem>
+</Tabs>
