@@ -1,3 +1,8 @@
+---
+title: $abs
+description: Returns the absolute value of a number
+---
+
 # $abs
 
 Returns the absolute value of a number.
